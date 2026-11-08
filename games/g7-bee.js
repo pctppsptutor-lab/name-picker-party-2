@@ -101,9 +101,9 @@
       }
       if (done) {
         const k = clamp((rt - r.doneAt) / .4);
-        charImg(Wn.av, 'win', STAGE[0], STAGE[1] + 40, 220 * (.6 + .4 * ease(k)));
+        charImg(Wn.av, 'win', STAGE[0], STAGE[1] + 16, 220 * (.6 + .4 * ease(k)));
         drawImg('p6', STAGE[0] + 110, STAGE[1] - 160 + Math.sin(rt * 4) * 8, 100);
-        tagC(Wn.name, STAGE[0], STAGE[1] + 64, true);
+        tagC(Wn.name, STAGE[0], STAGE[1] + 48, true);
       }
     },
 
