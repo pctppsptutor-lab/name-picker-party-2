@@ -1,4 +1,4 @@
-﻿// Game 10 â€” The Shape-Shifting Book (search & memory)
+// Game 10 — The Shape-Shifting Book (search & memory)
 // Ten pages flip open to show ten symbols, then the book closes and shuffles its pages; find the page with the winning symbol.
 // Twist: the first page opens but an eraser rubs its symbol away; the glowing bookmark slides to another page and shows the real result.
 (() => {
@@ -20,7 +20,7 @@
     else if (icon && w > 40) { const im = IMG[icon]; if (im) { const s = 84 * w / CW; ctx.drawImage(im, -s / 2, -s / 2 - 8, s, s * im.height / im.width); } }
     ctx.restore();
   }
-  // replay the page shuffles up to time t â†’ {x, y, lift} per player
+  // replay the page shuffles up to time t → {x, y, lift} per player
   function layout(r, t) {
     const slot = r.players.map(p => p.slot0), out = new Map(); let moving = null;
     for (const s of r.swaps) { if (t >= s.at + SWAP) { const a = slot[s.a]; slot[s.a] = slot[s.b]; slot[s.b] = a; } else if (t >= s.at) moving = s; }
@@ -35,7 +35,7 @@
   GAME_IMPL.g10 = {
     id: 'g10', title: 'The Shape-Shifting Book', base: 'assets/g10/', titleY: 820, paintedOk: false,
     assets: gAssets(['win'], [...ICONS, 'p0', 'p1', 'p4', 'p5', 'p6', 'p7', 'p19', 'p22']),
-    startBanner: 'ðŸ“– Remember which symbol belongs to whom!', mote: '#ffe6a8', rayColor: '#fff0c0',
+    startBanner: '📖 Remember which symbol belongs to whom!', mote: '#ffe6a8', rayColor: '#fff0c0',
 
     setup(r) {
       const slots = spread(r.players.length), icons = shuffle([...ICONS]);
@@ -50,20 +50,20 @@
 
     tick(r, t, te) {
       const f = activeFake(r, t), D = r.decoy, Wn = r.winner;
-      if (t > .6) cue('open', () => { SFX.swoosh(); r.banner = 'ðŸ“– The pages flip open â€” remember the symbols!'; });
-      if (t > .6 + r.M) cue('close', () => { SFX.tone(200, .25, { type: 'triangle', vol: .12 }); r.banner = 'ðŸŒ€ The book shuffles its pagesâ€¦'; });
+      if (t > .6) cue('open', () => { SFX.swoosh(); r.banner = '📖 The pages flip open — remember the symbols!'; });
+      if (t > .6 + r.M) cue('close', () => { SFX.tone(200, .25, { type: 'triangle', vol: .12 }); r.banner = '🌀 The book shuffles its pages…'; });
       for (const s of r.swaps) if (t > s.at) cue('sw' + s.at, () => SFX.noise(.18, { vol: .1, f: 2500, to: 900, q: .8 }));
-      if (f && te < 0 && t > r.swaps.reduce((m, s) => Math.max(m, s.at), 0)) cue('fk' + f.at, () => { r.banner = 'ðŸ”– The bookmark points at ' + f.p.name + "'s pageâ€¦"; SFX.leader(); });
+      if (f && te < 0 && t > r.swaps.reduce((m, s) => Math.max(m, s.at), 0)) cue('fk' + f.at, () => { r.banner = '🔖 The bookmark points at ' + f.p.name + "'s page…"; SFX.leader(); });
       if (!r.plain) {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); SFX.swoosh(); r.banner = 'ðŸ“– ' + D.name + "'s page flips openâ€¦"; });
-        if (te > .5) cue('b', () => { outcome('wrong_turn', D); SFX.noise(.6, { vol: .18, f: 1200, q: .6 }); SFX.sadTrombone(); r.banner = 'ðŸ§½ An eraser rubs the symbol away!'; });
-        if (te > 1.2) cue('c', () => { SFX.sparkle(); r.banner = 'ðŸ”– The bookmark starts to glowâ€¦'; });
-        if (te > 1.8) cue('d', () => { outcome('selected', Wn); SFX.swoosh(); r.banner = 'âœ¨ â€¦and slides to the real page!'; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); SFX.swoosh(); r.banner = '📖 ' + D.name + "'s page flips open…"; });
+        if (te > .5) cue('b', () => { outcome('wrong_turn', D); SFX.noise(.6, { vol: .18, f: 1200, q: .6 }); SFX.sadTrombone(); r.banner = '🧽 An eraser rubs the symbol away!'; });
+        if (te > 1.2) cue('c', () => { SFX.sparkle(); r.banner = '🔖 The bookmark starts to glow…'; });
+        if (te > 1.8) cue('d', () => { outcome('selected', Wn); SFX.swoosh(); r.banner = '✨ …and slides to the real page!'; });
       } else {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = 'ðŸ”– Is it ' + (D || Wn).name + "'s page?"; });
-        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = 'ðŸ”– The bookmark changes its mind!'; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = '🔖 Is it ' + (D || Wn).name + "'s page?"; });
+        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = '🔖 The bookmark changes its mind!'; });
       }
-      if (te > 2.4) cue('rev', () => { SFX.ding(); FX.sparkle(r.final.get(Wn).x, r.final.get(Wn).y, 30); r.banner = 'ðŸŒŸ ' + Wn.name + "'s page shines!"; });
+      if (te > 2.4) cue('rev', () => { SFX.ding(); FX.sparkle(r.final.get(Wn).x, r.final.get(Wn).y, 30); r.banner = '🌟 ' + Wn.name + "'s page shines!"; });
     },
 
     render(r, t) {
@@ -109,7 +109,7 @@
       drawImg('p0', 800 + Math.sin(t * .7) * 330, 210 + Math.sin(t * 2) * 6, 90);
     },
     onFinish() { FX.glitter(800, 560, 30, ['#ffd84a', '#ffffff', '#b48cff']); },
-    winBanner: r => 'ðŸ“– The story ends with ' + r.winner.name + '!',
+    winBanner: r => '📖 The story ends with ' + r.winner.name + '!',
     winPos: () => ({ x: 800, y: 580 })
   };
 })();

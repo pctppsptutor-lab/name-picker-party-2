@@ -1,6 +1,6 @@
-﻿// Game 11 â€” Capybara Melon Delivery
+// Game 11 — Capybara Melon Delivery
 // Ten capybaras nose floating watermelons along the canal; the melon that reaches the delivery ring picks the player.
-// Twist: the first melon to arrive splits open â€” a duckling is having a bath inside; the current changes and carries another capybara's melon to the ring.
+// Twist: the first melon to arrive splits open — a duckling is having a bath inside; the current changes and carries another capybara's melon to the ring.
 (() => {
   const X0 = 210, X1 = 1250, RING = [1430, 540];
   const laneY = (i, n) => 345 + (n > 1 ? i * 425 / (n - 1) : 210);
@@ -15,7 +15,7 @@
   GAME_IMPL.g11 = {
     id: 'g11', title: 'Capybara Melon Delivery', base: 'assets/g11/', titleY: 230, animals: true, paintedOk: false, resultPose: 'win',
     assets: gAssets(['idle', 'nudge', 'delivery', 'false', 'duck', 'win'], ['p19', 'p20', 'p25', 'p29']),
-    startBanner: 'ðŸ‰ The capybaras push off with their melons!', mote: '#e8fff0', rayColor: '#fff2a8',
+    startBanner: '🍉 The capybaras push off with their melons!', mote: '#e8fff0', rayColor: '#fff2a8',
 
     setup(r) {
       const n = r.players.length, order = shuffle([...Array(n).keys()]);
@@ -41,17 +41,17 @@
       const D = r.decoy, Wn = r.winner;
       if (te < -.25 && t > 1.3) {
         const lead = r.players.reduce((a, b) => progress(r, b, t) > progress(r, a, t) ? b : a);
-        if (lead !== r.leader && t - (r.leaderAt || 0) > .5) { r.leader = lead; r.leaderAt = t; r.banner = 'ðŸ‰ In front: ' + lead.name; SFX.leader(); }
+        if (lead !== r.leader && t - (r.leaderAt || 0) > .5) { r.leader = lead; r.leaderAt = t; r.banner = '🍉 In front: ' + lead.name; SFX.leader(); }
       }
       if (te < 0 && Math.random() < .04) SFX.paddle();
       if (!r.plain) {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = 'ðŸ‰ ' + D.name + "'s melon reaches the ring firstâ€¦"; });
-        if (te > .7) cue('b', () => { outcome('wrong_turn', D); SFX.pop(); SFX.quack(.1, 2); SFX.bubbles(); FX.splash(RING[0], RING[1], 18); r.banner = 'ðŸ¥ It splits open â€” a duckling is having a bath!'; });
-        if (te > 1.2) cue('c', () => { CAM.shake(r, 8); SFX.swoosh(); r.banner = 'ðŸŒŠ The current changes directionâ€¦'; });
-        if (te > 1.6) cue('d', () => { outcome('selected', Wn); r.banner = 'ðŸ‰ â€¦and carries ' + Wn.name + "'s melon in!"; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = '🍉 ' + D.name + "'s melon reaches the ring first…"; });
+        if (te > .7) cue('b', () => { outcome('wrong_turn', D); SFX.pop(); SFX.quack(.1, 2); SFX.bubbles(); FX.splash(RING[0], RING[1], 18); r.banner = '🐥 It splits open — a duckling is having a bath!'; });
+        if (te > 1.2) cue('c', () => { CAM.shake(r, 8); SFX.swoosh(); r.banner = '🌊 The current changes direction…'; });
+        if (te > 1.6) cue('d', () => { outcome('selected', Wn); r.banner = '🍉 …and carries ' + Wn.name + "'s melon in!"; });
       } else {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = 'ðŸ‰ ' + (D || Wn).name + ' is nearly thereâ€¦'; });
-        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = 'ðŸ’¨ â€¦but a melon slips past into the ring!'; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = '🍉 ' + (D || Wn).name + ' is nearly there…'; });
+        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = '💨 …but a melon slips past into the ring!'; });
       }
       if (te > 2.9) cue('in', () => { SFX.ding(); FX.ring(...RING, '#ffd84a', 150); FX.splash(...RING, 20); });
     },
@@ -88,7 +88,7 @@
       for (let i = 0; i < 10; i++) charImg(i, 'nudge', X0 + ((t * 40 + i * 97) % (X1 - X0)), laneY(i, 10) + Math.sin(t * 4 + i) * 3, 76);
     },
     onFinish() { FX.splash(RING[0], RING[1], 30); },
-    winBanner: r => 'ðŸ“¦ Delivered! ' + r.winner.name + "'s melon wins!",
+    winBanner: r => '📦 Delivered! ' + r.winner.name + "'s melon wins!",
     winPos: () => ({ x: RING[0] - 40, y: RING[1] - 40 })
   };
 })();

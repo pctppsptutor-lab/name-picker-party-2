@@ -1,4 +1,4 @@
-﻿// Game 12 â€” Popcorn Cinema (music & rhythm)
+// Game 12 — Popcorn Cinema (music & rhythm)
 // Ten students shake popcorn buckets to the projector's beat; kernels pop with the light pattern.
 // When the music stops, the spotlight picks whoever kept the last beat.
 // Twist: the first bucket explodes off the beat in a fake celebration; the projector plays one surprise extra beat and the spotlight moves to the real winner.
@@ -17,7 +17,7 @@
   GAME_IMPL.g12 = {
     id: 'g12', title: 'Popcorn Cinema', base: 'assets/g12/', titleY: 440, paintedOk: true,
     assets: gAssets(['listen', 'beat1', 'beat2', 'freeze', 'offbeat', 'bonus', 'win'], ['p0', 'p1', 'p2', 'p3', 'p6', 'p7', 'p16', 'p19', 'p20', 'p34']),
-    startBanner: 'ðŸŽ¬ Shake your popcorn to the beat!', mote: '#ffe8b0', rayColor: '#fff2a8',
+    startBanner: '🎬 Shake your popcorn to the beat!', mote: '#ffe8b0', rayColor: '#fff2a8',
 
     setup(r) {
       const slots = spread(r.players.length);
@@ -40,17 +40,17 @@
       // the beat: a kick on every beat before the music stops
       const b = Math.floor(t / BEAT);
       if (te < 0 && t > .8 && b !== r.lastBeat) { r.lastBeat = b; SFX.pop(); if (b % 2 === 0) FX.ring(...SCREEN, '#ff6fae', 120); }
-      if (f && te < 0) cue('fk' + f.at, () => { r.banner = 'ðŸ”¦ The spotlight finds ' + f.p.name + '!'; SFX.leader(); });
-      if (te > 0) cue('stop', () => { Music.stop(); SFX.tone(220, .5, { type: 'sawtooth', vol: .1, to: 60, lp: 900 }); r.banner = 'â¸ï¸ The music stops â€” FREEZE!'; });
+      if (f && te < 0) cue('fk' + f.at, () => { r.banner = '🔦 The spotlight finds ' + f.p.name + '!'; SFX.leader(); });
+      if (te > 0) cue('stop', () => { Music.stop(); SFX.tone(220, .5, { type: 'sawtooth', vol: .1, to: 60, lp: 900 }); r.banner = '⏸️ The music stops — FREEZE!'; });
       if (!r.plain) {
         if (te > .5) cue('a', () => { outcome('almost_selected', D); CAM.shake(r, 12); SFX.noise(.4, { vol: .35, f: 900, to: 300 }); FX.sparkle(D.sx, D.sy - 120, 26, ['#fff3c0', '#ffe066']);
-          r.banner = 'ðŸ’¥ KA-POP! ' + D.name + "'s bucket explodes off the beat!"; });
-        if (te > 1) cue('b', () => { outcome('wrong_turn', D); SFX.sadTrombone(); r.banner = 'ðŸŽ‰ A fake celebrationâ€¦'; });
-        if (te > 1.4) cue('c', () => { Music.play('tension'); [0, .12].forEach(d => SFX.tone(110, .2, { type: 'square', vol: .2, delay: d })); FX.ring(...SCREEN, '#7cf7ff', 220); r.banner = 'ðŸŽžï¸ The projector plays one bonus beat!'; });
-        if (te > 1.8) cue('d', () => { outcome('selected', Wn); r.banner = 'ðŸ”¦ The spotlight swings to ' + Wn.name + '!'; });
+          r.banner = '💥 KA-POP! ' + D.name + "'s bucket explodes off the beat!"; });
+        if (te > 1) cue('b', () => { outcome('wrong_turn', D); SFX.sadTrombone(); r.banner = '🎉 A fake celebration…'; });
+        if (te > 1.4) cue('c', () => { Music.play('tension'); [0, .12].forEach(d => SFX.tone(110, .2, { type: 'square', vol: .2, delay: d })); FX.ring(...SCREEN, '#7cf7ff', 220); r.banner = '🎞️ The projector plays one bonus beat!'; });
+        if (te > 1.8) cue('d', () => { outcome('selected', Wn); r.banner = '🔦 The spotlight swings to ' + Wn.name + '!'; });
       } else {
-        if (te > .3) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = 'ðŸ”¦ The spotlight lands on ' + (D || Wn).name + 'â€¦'; });
-        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = 'ðŸ”¦ â€¦then slides to the one who kept the beat!'; });
+        if (te > .3) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = '🔦 The spotlight lands on ' + (D || Wn).name + '…'; });
+        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = '🔦 …then slides to the one who kept the beat!'; });
       }
     },
 
@@ -99,7 +99,7 @@
       SPOTS.forEach(([x, y], i) => charImg(i, Math.floor(t / BEAT) % 2 ? 'beat1' : 'beat2', x, y, kidH(y)));
     },
     onFinish(r) { FX.sparkle(r.winner.sx, r.winner.sy - 150, 40, ['#fff3c0', '#ffd84a', '#ff6fae']); },
-    winBanner: r => 'ðŸ¿ ' + r.winner.name + ' kept the beat!',
+    winBanner: r => '🍿 ' + r.winner.name + ' kept the beat!',
     winPos: r => ({ x: r.winner.sx, y: r.winner.sy - 130 })
   };
 })();

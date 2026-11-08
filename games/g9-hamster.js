@@ -1,4 +1,4 @@
-﻿// Game 09 â€” Hamster Turbo Wheels
+// Game 09 — Hamster Turbo Wheels
 // Ten hamsters run in see-through wheels; the spinning makes power that fills their jar and rings the finish bell.
 // Twist: the first wheel spins far too fast and slips backwards; a sunflower seed rolls over a switch and lights the real winner's wheel.
 (() => {
@@ -37,7 +37,7 @@
   GAME_IMPL.g9 = {
     id: 'g9', title: 'Hamster Turbo Wheels', base: 'assets/g9/', titleY: 470, animals: true, paintedOk: false,
     assets: gAssets(['idle', 'ready', 'run', 'near', 'false', 'reverse', 'win'], ['p0', 'p1', 'p2', 'p3', 'p4', 'p5', 'p11', 'p12', 'p13', 'p21', 'p20', 'p22', 'p30']),
-    startBanner: 'ðŸ¹ Readyâ€¦ setâ€¦ RUN!', mote: '#fff3c0', rayColor: '#fff2a8',
+    startBanner: '🐹 Ready… set… RUN!', mote: '#fff3c0', rayColor: '#fff2a8',
 
     setup(r) {
       const slots = spread(r.players.length);
@@ -48,16 +48,16 @@
 
     tick(r, t, te) {
       const f = activeFake(r, t), D = r.decoy, Wn = r.winner;
-      if (f && te < 0) cue('fk' + f.at, () => { r.banner = 'âš¡ ' + f.p.name + "'s jar is charging fast!"; SFX.leader(); });
+      if (f && te < 0) cue('fk' + f.at, () => { r.banner = '⚡ ' + f.p.name + "'s jar is charging fast!"; SFX.leader(); });
       if (te < 0 && Math.random() < .07) SFX.tone(140 + Math.random() * 60, .05, { type: 'square', vol: .02 });   // wheels squeak
       if (!r.plain) {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = 'ðŸŒ€ ' + D.name + "'s wheel is spinning WAY too fast!"; });
-        if (te > .8) cue('b', () => { outcome('wrong_turn', D); CAM.shake(r, 10); SFX.swoosh(); SFX.sadTrombone(); r.banner = 'ðŸ˜µ Whoa! It slips backwards!'; });
-        if (te > 1.2) cue('c', () => { SFX.tone(300, .4, { type: 'triangle', vol: .12, to: 120 }); r.banner = 'ðŸŒ» A sunflower seed rolls onto the switchâ€¦'; });
-        if (te > 1.8) cue('d', () => { outcome('selected', Wn); FX.bolts(...SWITCH, 5, 90, '#ffe066'); SFX.sparkle(); r.banner = 'ðŸ’¡ Click! ' + Wn.name + "'s wheel lights up!"; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = '🌀 ' + D.name + "'s wheel is spinning WAY too fast!"; });
+        if (te > .8) cue('b', () => { outcome('wrong_turn', D); CAM.shake(r, 10); SFX.swoosh(); SFX.sadTrombone(); r.banner = '😵 Whoa! It slips backwards!'; });
+        if (te > 1.2) cue('c', () => { SFX.tone(300, .4, { type: 'triangle', vol: .12, to: 120 }); r.banner = '🌻 A sunflower seed rolls onto the switch…'; });
+        if (te > 1.8) cue('d', () => { outcome('selected', Wn); FX.bolts(...SWITCH, 5, 90, '#ffe066'); SFX.sparkle(); r.banner = '💡 Click! ' + Wn.name + "'s wheel lights up!"; });
       } else {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = 'âš¡ ' + (D || Wn).name + ' is almost at the bellâ€¦'; });
-        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = 'ðŸ¹ â€¦but another hamster puts on a burst of speed!'; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = '⚡ ' + (D || Wn).name + ' is almost at the bell…'; });
+        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = '🐹 …but another hamster puts on a burst of speed!'; });
       }
       if (te > 2.8) cue('ring', () => { [0, .18, .36].forEach(d => SFX.tone(1568, .6, { vol: .12, delay: d })); FX.ring(...BELL, '#ffd84a', 160); });
     },
@@ -114,7 +114,7 @@
       drawImg('p0', 1500, 440, 120, { anchor: 'bottom' });
     },
     onFinish() { FX.bolts(800, 470, 8, 160, '#ffe066'); },
-    winBanner: r => 'ðŸ”” ' + r.winner.name + ' rings the bell!',
+    winBanner: r => '🔔 ' + r.winner.name + ' rings the bell!',
     winPos: () => ({ x: 800, y: 450 })
   };
 })();
