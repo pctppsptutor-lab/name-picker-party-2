@@ -1,4 +1,4 @@
-// Game 07 — Sneezing Flower Bee
+﻿// Game 07 â€” Sneezing Flower Bee
 // Ten gardeners stand by their own flowers; the bee checks the flowers one by one and lands on the chosen one.
 // Twist: the first flower sneezes pollen, blowing the bee across the garden straight onto the real winning flower.
 (() => {
@@ -32,9 +32,8 @@
 
   GAME_IMPL.g7 = {
     id: 'g7', title: 'Sneezing Flower Bee', base: 'assets/g7/', titleY: 560, paintedOk: true,
-    assets: gAssets(['idle', 'ready', 'action', 'almost', 'fake', 'twist', 'win'],
-      [...FLOWERS, 'p0', 'p1', 'p2', 'p3', 'p5', 'p6', 'p24', 'p25', 'p26', 'p37', 'p29', 'p30', 'p31', 'p32', 'p33']),
-    startBanner: '🐝 The bee buzzes out of the hive!', mote: '#fff6c8', rayColor: '#fff2a8',
+    assets: gAssets(['idle', 'ready', 'almost', 'fake', 'twist', 'win'], [...FLOWERS, 'p0', 'p2', 'p3', 'p5', 'p6', 'p24', 'p25', 'p26', 'p37']),
+    startBanner: 'ðŸ The bee buzzes out of the hive!', mote: '#fff6c8', rayColor: '#fff2a8',
 
     setup(r) {
       const slots = spread(r.players.length);
@@ -50,18 +49,18 @@
     tick(r, t, te) {
       const f = activeFake(r, t), D = r.decoy, Wn = r.winner;
       if (te < 0) { r.lastBee = bee(r, t); r.atTW = r.lastBee; }
-      if (f && te < 0) cue('fk' + f.at, () => { r.banner = '🐝 The bee checks ' + f.p.name + "'s flower…"; SFX.leader(); FX.glitter(...top(f.p), 5); });
+      if (f && te < 0) cue('fk' + f.at, () => { r.banner = 'ðŸ The bee checks ' + f.p.name + "'s flowerâ€¦"; SFX.leader(); FX.glitter(...top(f.p), 5); });
       if (te < 0 && Math.random() < .04) SFX.tone(220 + Math.random() * 40, .09, { type: 'sawtooth', vol: .025, lp: 900 });   // buzz
       if (!r.plain) {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = '🐝 The bee lands on ' + D.name + "'s flower!"; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = 'ðŸ The bee lands on ' + D.name + "'s flower!"; });
         if (te > .7) cue('b', () => { outcome('wrong_turn', D); CAM.shake(r, 12); SFX.noise(.25, { vol: .2, f: 500, to: 2000 }); SFX.noise(.5, { vol: .35, f: 2600, to: 400, delay: .25 });
-          FX.glitter(...top(D), 30, ['#ffe066', '#fff3a0']); r.banner = '🤧 Ah-CHOO! The flower sneezes pollen!'; });
-        if (te > 1) cue('c', () => { SFX.wheee(); SFX.swoosh(); r.banner = '💨 The bee is blown across the garden…'; });
-        if (te > 2.3) cue('d', () => { outcome('selected', Wn); SFX.pop(); r.banner = '🌼 …and lands on ' + Wn.name + "'s flower!"; });
+          FX.glitter(...top(D), 30, ['#ffe066', '#fff3a0']); r.banner = 'ðŸ¤§ Ah-CHOO! The flower sneezes pollen!'; });
+        if (te > 1) cue('c', () => { SFX.wheee(); SFX.swoosh(); r.banner = 'ðŸ’¨ The bee is blown across the gardenâ€¦'; });
+        if (te > 2.3) cue('d', () => { outcome('selected', Wn); SFX.pop(); r.banner = 'ðŸŒ¼ â€¦and lands on ' + Wn.name + "'s flower!"; });
       } else {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = '🐝 Is it ' + (D || Wn).name + "'s flower?"; });
-        if (te > 1.2) cue('b', () => { SFX.boing(); r.banner = '🙅 Not quite — off it buzzes again…'; });
-        if (te > 2.3) cue('d', () => { outcome('selected', Wn); SFX.pop(); r.banner = '🌼 The bee chooses ' + Wn.name + '!'; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = 'ðŸ Is it ' + (D || Wn).name + "'s flower?"; });
+        if (te > 1.2) cue('b', () => { SFX.boing(); r.banner = 'ðŸ™… Not quite â€” off it buzzes againâ€¦'; });
+        if (te > 2.3) cue('d', () => { outcome('selected', Wn); SFX.pop(); r.banner = 'ðŸŒ¼ The bee chooses ' + Wn.name + '!'; });
       }
     },
 
@@ -114,7 +113,7 @@
       drawImg('p2', 800 + Math.sin(t * .9) * 520, 230 + Math.sin(t * 1.7) * 110 + Math.sin(t * 14) * 3, 92, { flip: Math.cos(t * .9) < 0 });
     },
     onFinish() { FX.glitter(STAGE[0], STAGE[1] - 60, 30, ['#ffd84a', '#ff9fc4', '#ffffff']); },
-    winBanner: r => '🌻 ' + r.winner.name + ' has the honey flower!',
+    winBanner: r => 'ðŸŒ» ' + r.winner.name + ' has the honey flower!',
     winPos: () => ({ x: STAGE[0], y: STAGE[1] - 80 })
   };
 })();

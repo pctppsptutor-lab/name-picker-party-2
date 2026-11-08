@@ -1,4 +1,4 @@
-// Game 08 — Candy Tornado (chain reaction)
+﻿// Game 08 â€” Candy Tornado (chain reaction)
 // Candies drop into a sweet chain-reaction machine: peppermint chute, jelly springs and chocolate levers,
 // then a switch sends each one to one of ten cups. The cup that catches the golden candy is picked.
 // Twist: the golden candy triggers a fake lollipop and gets stuck; the candy cat pulls a spare lever,
@@ -47,9 +47,8 @@
 
   GAME_IMPL.g8 = {
     id: 'g8', title: 'Candy Tornado', base: 'assets/g8/', titleY: 760, paintedOk: true,
-    assets: gAssets(['waiting', 'drop', 'bounce', 'false', 'switch', 'win'],
-      [...BALLS, 'p14', 'p18', 'p28', 'p29', 'p30', 'p31', 'p36', 'p40', 'p0', 'p1', 'p3', 'p4', 'p5', 'p6', 'p23', 'p24', 'p25', 'p26', 'p27']),
-    startBanner: '🍬 The candy machine whirs to life!', mote: '#ffd6ec', rayColor: '#ffe0f0',
+    assets: gAssets(['waiting', 'drop', 'false', 'switch', 'win'], [...BALLS, 'p14', 'p18', 'p28', 'p29', 'p30', 'p0', 'p3', 'p5', 'p6', 'p23', 'p24', 'p25']),
+    startBanner: 'ðŸ¬ The candy machine whirs to life!', mote: '#ffd6ec', rayColor: '#ffe0f0',
 
     setup(r) {
       const cups = shuffle([...Array(10).keys()]);
@@ -64,18 +63,18 @@
       const f = activeFake(r, t), D = r.decoy, Wn = r.winner;
       for (const run of r.runs) {
         if (t > run.at) cue('drop' + run.at, () => SFX.pop());
-        if (t > run.at + run.dur) cue('in' + run.at, () => { SFX.ding(); FX.sparkle(CUPS[run.to][0], CUPS[run.to][1] - 20, 10); r.banner = '🍬 A candy lands in ' + run.p.name + "'s cup… and pops back out!"; });
+        if (t > run.at + run.dur) cue('in' + run.at, () => { SFX.ding(); FX.sparkle(CUPS[run.to][0], CUPS[run.to][1] - 20, 10); r.banner = 'ðŸ¬ A candy lands in ' + run.p.name + "'s cupâ€¦ and pops back out!"; });
       }
-      if (t > r.goldAt) cue('gold', () => { SFX.pop(); SFX.sparkle(); r.banner = '✨ Here comes the golden candy!'; });
+      if (t > r.goldAt) cue('gold', () => { SFX.pop(); SFX.sparkle(); r.banner = 'âœ¨ Here comes the golden candy!'; });
       if (te < 0 && Math.random() < .05) SFX.tone(600 + Math.random() * 500, .05, { type: 'triangle', vol: .03 });   // rattling candies
       if (!r.plain) {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = '🍭 It heads for ' + D.name + "'s cup…"; });
-        if (te > .5) cue('b', () => { outcome('wrong_turn', D); SFX.boing(); SFX.sadTrombone(); r.banner = '🍭 Oops! A fake lollipop — the candy is stuck!'; });
-        if (te > 1.1) cue('c', () => { CAM.shake(r, 9); SFX.swoosh(); r.banner = '🐱 The candy cat pulls the spare lever!'; });
-        if (te > 1.5) cue('d', () => { outcome('selected', Wn); FX.sparkle(...SWITCH, 30); r.banner = '🔀 Every rail swaps!'; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = 'ðŸ­ It heads for ' + D.name + "'s cupâ€¦"; });
+        if (te > .5) cue('b', () => { outcome('wrong_turn', D); SFX.boing(); SFX.sadTrombone(); r.banner = 'ðŸ­ Oops! A fake lollipop â€” the candy is stuck!'; });
+        if (te > 1.1) cue('c', () => { CAM.shake(r, 9); SFX.swoosh(); r.banner = 'ðŸ± The candy cat pulls the spare lever!'; });
+        if (te > 1.5) cue('d', () => { outcome('selected', Wn); FX.sparkle(...SWITCH, 30); r.banner = 'ðŸ”€ Every rail swaps!'; });
       } else {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = '🍬 It bounces towards ' + (D || Wn).name + "'s cup…"; });
-        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = '🍬 …bounces off the jelly and changes course!'; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = 'ðŸ¬ It bounces towards ' + (D || Wn).name + "'s cupâ€¦"; });
+        if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = 'ðŸ¬ â€¦bounces off the jelly and changes course!'; });
       }
       if (te > 3) cue('cupin', () => { SFX.ding(); FX.sparkle(CUPS[Wn.cup][0], CUPS[Wn.cup][1] - 20, 30); });
     },
@@ -155,7 +154,7 @@
       KIDS.forEach(([x, y], i) => charImg(i, 'waiting', x, y, 110));
     },
     onFinish(r) { const [x, y] = CUPS[r.winner.cup]; FX.sparkle(x, y - 20, 40, ['#ff6fae', '#ffd84a', '#7cf7ff']); },
-    winBanner: r => '🏆 The golden candy lands in ' + r.winner.name + "'s cup!",
+    winBanner: r => 'ðŸ† The golden candy lands in ' + r.winner.name + "'s cup!",
     winPos: r => ({ x: 1180, y: 560 })
   };
 })();
