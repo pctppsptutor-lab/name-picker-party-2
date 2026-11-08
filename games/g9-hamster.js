@@ -91,14 +91,14 @@
         charImg(p.av, pose, p.x, WHEEL_Y - bob, 116, { rot });
         if (isW) FX.every(r, 'z' + p.av, .2, () => FX.bolts(p.x, WHEEL_Y - 70, 2, 70, '#ffe066'));
       }
-      // referee mouse
-      let mp = 'p0';
+      // referee mouse scurries along the sideline checking the jars
+      let mp = Math.floor(rt * 3) % 2 ? 'p0' : 'p1', mx = 1485 + Math.sin(rt * 2.2) * 35, my = 430 + Math.cos(rt * 1.6) * 85 - Math.abs(Math.sin(rt * 7)) * 14;
       if (rt < 1.2) mp = 'p1';
       else if (!r.plain && te > .8 && te < 1.2) mp = 'p3';
-      else if (!r.plain && te > 1.2 && te < 1.8) mp = 'p5';
+      else if (!r.plain && te > 1.2 && te < 1.8) { mp = 'p5'; mx = SWITCH[0] - 20; my = SWITCH[1] - 10; }
       else if (te > 1.8) mp = 'p2';
       if (done) mp = 'p4';
-      drawImg(mp, 1500, 440, 120, { anchor: 'bottom', flip: mp === 'p5' });
+      drawImg(mp, mx, my, 120, { anchor: 'bottom', flip: mp === 'p5' || Math.sin(rt * 1.6) > 0 });
       if (done) {
         const k = clamp((rt - r.doneAt) / .4);
         drawImg('p30', 800, 520, 300, { alpha: .8 });
@@ -111,7 +111,7 @@
       drawImg('p11', ...BELL, 110);
       drawImg('p20', ...SWITCH, 70, { anchor: 'bottom' });
       XS.forEach((x, i) => { jar(x, .3 + .25 * Math.sin(t * .8 + i), t, false); charImg(i, 'run', x, WHEEL_Y - Math.abs(Math.sin(t * 12 + i)) * 4, 116); });
-      drawImg('p0', 1500, 440, 120, { anchor: 'bottom' });
+      drawImg(Math.floor(t * 2.5) % 2 ? 'p0' : 'p1', 1485 + Math.sin(t * 2) * 35, 430 + Math.cos(t * 1.5) * 80 - Math.abs(Math.sin(t * 6.5)) * 12, 120, { anchor: 'bottom' });
     },
     onFinish() { FX.bolts(800, 470, 8, 160, '#ffe066'); },
     winBanner: r => '🔔 ' + r.winner.name + ' rings the bell!',

@@ -102,7 +102,7 @@
       if (done) {
         const k = clamp((rt - r.doneAt) / .4);
         charImg(Wn.av, 'win', STAGE[0], STAGE[1] + 16, 220 * (.6 + .4 * ease(k)));
-        drawImg('p6', STAGE[0] + 110, STAGE[1] - 160 + Math.sin(rt * 4) * 8, 100);
+        drawImg('p5', STAGE[0] + Math.cos(rt * 3) * 110, STAGE[1] - 150 + Math.sin(rt * 6) * 18, 86, { flip: Math.sin(rt * 3) > 0 });
         tagC(Wn.name, STAGE[0], STAGE[1] + 48, true);
       }
     },

@@ -59,13 +59,14 @@
       const beatK = (rt % BEAT) / BEAT, onBeat = te < 0 && rt > .8;
       // projector mascot on the screen, beat rings behind it
       if (onBeat) drawImg('p19', ...SCREEN, 170 * (1 + (1 - beatK) * .25), { alpha: .5 + .5 * (1 - beatK) });
-      let pp = 'p1';
+      let pp = Math.floor(rt / BEAT) % 2 ? 'p1' : 'p2';
       if (te > 0) pp = 'p0';
       if (!r.plain && te > .5) pp = 'p3';
       if (!r.plain && te > 1.4) pp = 'p6';
       if (r.plain && te > 1) pp = 'p2';
       if (done) pp = 'p7';
-      drawImg(pp, SCREEN[0], SCREEN[1] + 10, 190);
+      const px = te < 0 ? SCREEN[0] + Math.sin(rt * 1.7) * 150 : SCREEN[0], py = SCREEN[1] + 10 - (onBeat ? Math.abs(Math.sin(beatK * Math.PI)) * 18 : 0);
+      drawImg(pp, px, py, 190, { rot: onBeat ? Math.sin(rt * 6) * .06 : 0 });
       const [sx, sy, sa] = done ? [Wn.sx, Wn.sy - 40, 1] : this.spot(r, rt);
       spotlight(sx, sy, sa);
       const order = [...r.players].sort((a, b) => a.sy - b.sy);
@@ -94,7 +95,7 @@
 
     idle(t) {
       drawImg('p19', ...SCREEN, 170 * (1 + .1 * Math.sin(t * 4)), { alpha: .6 });
-      drawImg('p0', SCREEN[0], SCREEN[1] + 10, 190);
+      drawImg(Math.floor(t / BEAT) % 2 ? 'p1' : 'p2', SCREEN[0] + Math.sin(t * 1.6) * 140, SCREEN[1] + 10 - Math.abs(Math.sin(t / BEAT * Math.PI)) * 14, 190, { rot: Math.sin(t * 5) * .05 });
       spotlight(800 + Math.sin(t * 1.3) * 520, 640 + Math.sin(t * 2.1) * 140, .6);
       SPOTS.forEach(([x, y], i) => charImg(i, Math.floor(t / BEAT) % 2 ? 'beat1' : 'beat2', x, y, kidH(y)));
     },

@@ -63,7 +63,7 @@
       if (swing) { drawImg('p20', RING[0] - 160, RING[1] + 70, 260 * (1 + .1 * Math.sin(rt * 8)), { alpha: .8 }); FX.every(r, 'cur', .08, () => FX.splash(RING[0] - 220 + Math.random() * 200, RING[1] + 80, 2)); }
       drawImg('p29', ...RING, 200, { alpha: .8 });
       drawImg('p19', ...RING, 170);
-      drawImg('p25', RING[0] + 110, RING[1] - 30, 90, { anchor: 'bottom' });
+      drawImg('p25', RING[0] + 105 + Math.sin(rt * 1.6) * 30, RING[1] - 30 + Math.cos(rt * 1.9) * 55 - Math.abs(Math.sin(rt * 5.5)) * 10, 96, { anchor: 'bottom', flip: Math.cos(rt * 1.6) > 0 });
       const order = [...r.players].sort((a, b) => this.pos(r, a, rt)[1] - this.pos(r, b, rt)[1]);
       for (const p of order) {
         if (done && p === Wn) continue;
@@ -84,7 +84,8 @@
     },
 
     idle(t) {
-      drawImg('p29', ...RING, 200, { alpha: .8 }); drawImg('p19', ...RING, 170); drawImg('p25', RING[0] + 110, RING[1] - 30, 90, { anchor: 'bottom' });
+      drawImg('p29', ...RING, 200, { alpha: .8 }); drawImg('p19', ...RING, 170);
+      drawImg('p25', RING[0] + 105 + Math.sin(t * 1.5) * 30, RING[1] - 30 + Math.cos(t * 1.8) * 55 - Math.abs(Math.sin(t * 5)) * 10, 96, { anchor: 'bottom', flip: Math.cos(t * 1.5) > 0 });
       for (let i = 0; i < 10; i++) charImg(i, 'nudge', X0 + ((t * 40 + i * 97) % (X1 - X0)), laneY(i, 10) + Math.sin(t * 4 + i) * 3, 76);
     },
     onFinish() { FX.splash(RING[0], RING[1], 30); },

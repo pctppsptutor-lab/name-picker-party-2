@@ -119,12 +119,12 @@
       // the golden candy with a sparkle trail
       const g = !done && this.gold(r, rt);
       if (g) { FX.halo(g[0], g[1], 30, '#ffd84a', .7); drawImg('p14', g[0], g[1], 34); FX.every(r, 'gtrail', .05, () => FX.glitter(g[0], g[1], 1)); }
-      // candy cat
-      let cp = 'p0', cx = CAT[0];
+      // candy cat patrols between the levers and switch
+      let cp = Math.floor(rt * 2.5) % 2 ? 'p0' : 'p3', cx = CAT[0] - 100 + Math.sin(rt * 1.6) * 150, cy = CAT[1] - Math.abs(Math.sin(rt * 6.4)) * 16, cFlip = Math.cos(rt * 1.6) < 0;
       if (!r.plain && te > .5) cp = 'p3';
-      if (!r.plain && te > 1.1) { cp = 'p5'; cx = lerp(CAT[0], 760, ease(clamp((te - 1.1) / .3))); }
-      if (done) cp = 'p6';
-      drawImg(cp, cx, CAT[1], 120, { anchor: 'bottom' });
+      if (!r.plain && te > 1.1) { cp = 'p5'; cx = lerp(CAT[0], 760, ease(clamp((te - 1.1) / .3))); cFlip = false; }
+      if (done) { cp = 'p6'; cx = CAT[0] - 160; cFlip = false; }
+      drawImg(cp, cx, cy, 120, { anchor: 'bottom', flip: cFlip });
       // the students at the bottom drop their candies
       for (const p of r.players) {
         if (done && p === Wn) continue;
@@ -150,7 +150,7 @@
       drawImg('p18', 92, 140, 90);
       for (let i = 0; i < 10; i++) cup(i, false, t);
       const k = (t * .35) % 1; drawImg(BALLS[Math.floor(t * .35) % 10], ...along(route(Math.floor(t * .35) % 10), k), 26);
-      drawImg('p0', CAT[0], CAT[1], 120, { anchor: 'bottom' });
+      drawImg(Math.floor(t * 2) % 2 ? 'p0' : 'p3', CAT[0] - 100 + Math.sin(t * 1.5) * 140, CAT[1] - Math.abs(Math.sin(t * 6)) * 14, 120, { anchor: 'bottom', flip: Math.cos(t * 1.5) < 0 });
       KIDS.forEach(([x, y], i) => charImg(i, 'waiting', x, y, 110));
     },
     onFinish(r) { const [x, y] = CUPS[r.winner.cup]; FX.sparkle(x, y - 20, 40, ['#ff6fae', '#ffd84a', '#7cf7ff']); },
