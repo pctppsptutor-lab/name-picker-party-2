@@ -102,10 +102,12 @@
       LEVERS.forEach(([x, y], i) => drawImg(i === 2 && !r.plain && te > 1.1 ? 'p29' : 'p28', x, y, 64, { anchor: 'bottom' }));
       drawImg('p18', 92, 140, 90);
       // cups with name tags
+      const camera = ctx.getTransform();
+      const right = (ctx.canvas.width - camera.e) / camera.a - 14;
       for (const p of r.players) {
         const lit = (te > 3 || done) && p === Wn, near = (f && f.p === p && te < 0) || (te > 0 && te < (r.plain ? 1 : 1.5) && p === (D || Wn));
         cup(p.cup, lit || near, rt, near ? Math.sin(rt * 30) * .08 : 0);
-        tagC(p.name, CUPS[p.cup][0] + 120, CUPS[p.cup][1] - 4, lit || near);
+        drawTag(p.name, Math.min(CUPS[p.cup][0] + 184, right), CUPS[p.cup][1] - 4, lit || near);
       }
       // practice candies
       for (const run of r.runs) {
