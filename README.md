@@ -1,6 +1,6 @@
 # Name Picker Party 2
 
-Six more classroom name-picker mini-games, made to be shown on a projector. Same engine and look as [Name Picker Party](https://github.com/infinitegamingtv/goi-ten-vui-nhon).
+Six more classroom name-picker mini-games, made to be shown on a projector. Same engine and look as [Name Picker Party](https://github.com/pctppsptutor-lab/goi-ten-vui-nhon).
 
 ## How to play
 
