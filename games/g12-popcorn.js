@@ -1,4 +1,4 @@
-// Game 12 — Popcorn Cinema (music & rhythm)
+// Game 12 — Popcorn Goes Pop (music & rhythm)
 // Ten students shake popcorn buckets to the projector's beat; kernels pop with the light pattern.
 // When the music stops, the spotlight picks whoever kept the last beat.
 // Twist: the first bucket explodes off the beat in a fake celebration; the projector plays one surprise extra beat and the spotlight moves to the real winner.
@@ -15,7 +15,7 @@
   }
 
   GAME_IMPL.g12 = {
-    id: 'g12', title: 'Popcorn Cinema', base: 'assets/g12/', titleY: 440, paintedOk: true,
+    id: 'g12', title: 'Popcorn Goes Pop', base: 'assets/g12/', titleY: 440, paintedOk: true,
     assets: gAssets(['listen', 'beat1', 'beat2', 'freeze', 'offbeat', 'bonus', 'win'], ['p0', 'p1', 'p2', 'p3', 'p6', 'p7', 'p16', 'p19', 'p20', 'p34']),
     startBanner: '🎬 Shake your popcorn to the beat!', mote: '#ffe8b0', rayColor: '#fff2a8',
 

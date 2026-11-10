@@ -1,4 +1,4 @@
-// Game 09 — Hamster Turbo Wheels
+// Game 09 — Hamster Wheels
 // Ten hamsters run in see-through wheels; the spinning makes power that fills their jar and rings the finish bell.
 // Twist: the first wheel spins far too fast and slips backwards; a sunflower seed rolls over a switch and lights the real winner's wheel.
 (() => {
@@ -35,7 +35,7 @@
   }
 
   GAME_IMPL.g9 = {
-    id: 'g9', title: 'Hamster Turbo Wheels', base: 'assets/g9/', titleY: 470, animals: true, paintedOk: false,
+    id: 'g9', title: 'Hamster Wheels', base: 'assets/g9/', titleY: 470, animals: true, paintedOk: false,
     assets: gAssets(['idle', 'ready', 'run', 'near', 'false', 'reverse', 'win'], ['p0', 'p1', 'p2', 'p3', 'p4', 'p5', 'p11', 'p12', 'p13', 'p21', 'p20', 'p22', 'p30']),
     startBanner: '🐹 Ready… set… RUN!', mote: '#fff3c0', rayColor: '#fff2a8',
 

@@ -1,4 +1,4 @@
-// Game 10 — The Shape-Shifting Book (search & memory)
+// Game 10 — Magic Book (search & memory)
 // Ten pages flip open to show ten symbols, then the book closes and shuffles its pages; find the page with the winning symbol.
 // Twist: the first page opens but an eraser rubs its symbol away; the glowing bookmark slides to another page and shows the real result.
 (() => {
@@ -33,7 +33,7 @@
   }
 
   GAME_IMPL.g10 = {
-    id: 'g10', title: 'The Shape-Shifting Book', base: 'assets/g10/', titleY: 820, paintedOk: false,
+    id: 'g10', title: 'Magic Book', base: 'assets/g10/', titleY: 820, paintedOk: false,
     assets: gAssets(['win'], [...ICONS, 'p0', 'p1', 'p4', 'p5', 'p6', 'p7', 'p19', 'p22']),
     startBanner: '📖 Remember which symbol belongs to whom!', mote: '#ffe6a8', rayColor: '#fff0c0',
 

@@ -1,4 +1,4 @@
-// Game 11 — Capybara Melon Delivery
+// Game 11 — Capybara Wants Melon
 // Ten capybaras nose floating watermelons along the canal; the melon that reaches the delivery ring picks the player.
 // Twist: the first melon to arrive splits open — a duckling is having a bath inside; the current changes and carries another capybara's melon to the ring.
 (() => {
@@ -13,7 +13,7 @@
   }
 
   GAME_IMPL.g11 = {
-    id: 'g11', title: 'Capybara Melon Delivery', base: 'assets/g11/', titleY: 230, animals: true, paintedOk: false, resultPose: 'win',
+    id: 'g11', title: 'Capybara Wants Melon', base: 'assets/g11/', titleY: 230, animals: true, paintedOk: false, resultPose: 'win',
     assets: gAssets(['idle', 'nudge', 'delivery', 'false', 'duck', 'win'], ['p19', 'p20', 'p25', 'p29']),
     startBanner: '🍉 The capybaras push off with their melons!', mote: '#e8fff0', rayColor: '#fff2a8',
 

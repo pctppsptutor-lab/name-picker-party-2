@@ -1,4 +1,4 @@
-// Game 07 — Sneezing Flower Bee
+// Game 07 — Achoo, Bee!
 // Ten gardeners stand by their own flowers; the bee checks the flowers one by one and lands on the chosen one.
 // Twist: the first flower sneezes pollen, blowing the bee across the garden straight onto the real winning flower.
 (() => {
@@ -31,7 +31,7 @@
   const arcP = (a, b, k, lift) => [lerp(a[0], b[0], k), lerp(a[1], b[1], k) - Math.sin(k * Math.PI) * lift];
 
   GAME_IMPL.g7 = {
-    id: 'g7', title: 'Sneezing Flower Bee', base: 'assets/g7/', titleY: 560, paintedOk: true,
+    id: 'g7', title: 'Achoo, Bee!', base: 'assets/g7/', titleY: 560, paintedOk: true,
     assets: gAssets(['idle', 'ready', 'almost', 'fake', 'twist', 'win'], [...FLOWERS, 'p0', 'p2', 'p3', 'p5', 'p6', 'p24', 'p25', 'p26', 'p37']),
     startBanner: '🐝 The bee buzzes out of the hive!', mote: '#fff6c8', rayColor: '#fff2a8',
 

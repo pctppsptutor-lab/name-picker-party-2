@@ -1,4 +1,4 @@
-// Game 08 — Candy Tornado (chain reaction)
+// Game 08 — Candy Storm (chain reaction)
 // Candies drop into a sweet chain-reaction machine: peppermint chute, jelly springs and chocolate levers,
 // then a switch sends each one to one of ten cups. The cup that catches the golden candy is picked.
 // Twist: the golden candy triggers a fake lollipop and gets stuck; the candy cat pulls a spare lever,
@@ -46,7 +46,7 @@
   }
 
   GAME_IMPL.g8 = {
-    id: 'g8', title: 'Candy Tornado', base: 'assets/g8/', titleY: 760, paintedOk: true,
+    id: 'g8', title: 'Candy Storm', base: 'assets/g8/', titleY: 760, paintedOk: true,
     assets: gAssets(['waiting', 'drop', 'false', 'switch', 'win'], [...BALLS, 'p14', 'p18', 'p28', 'p29', 'p30', 'p0', 'p3', 'p5', 'p6', 'p23', 'p24', 'p25']),
     startBanner: '🍬 The candy machine whirs to life!', mote: '#ffd6ec', rayColor: '#ffe0f0',
 
