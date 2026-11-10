@@ -39,6 +39,7 @@
       const slots = spread(r.players.length);
       r.players.forEach((p, i) => { [p.sx, p.sy] = SPOTS[slots[i]]; p.flower = FLOWERS[slots[i]]; p.x = p.sx; p.y = p.sy - 40; });
       r.fakes = makeFakes(r, 1.2);
+      r.atTW = bee(r, 0);
       // the sneeze always throws the bee to the other side of the garden
       if (!r.plain && r.decoy) {
         const far = r.players.filter(p => p !== r.winner && Math.abs(p.sx - r.winner.sx) > 300);
@@ -59,7 +60,7 @@
         if (te > 2.3) cue('d', () => { outcome('selected', Wn); SFX.pop(); r.banner = '🌼 …and lands on ' + Wn.name + "'s flower!"; });
       } else {
         if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = '🐝 Is it ' + (D || Wn).name + "'s flower?"; });
-        if (te > 1.2) cue('b', () => { SFX.boing(); r.banner = '🙅 Not quite — off it buzzes again…'; });
+        if (D && te > 1.2) cue('b', () => { SFX.boing(); r.banner = '🙅 Not quite — off it buzzes again…'; });
         if (te > 2.3) cue('d', () => { outcome('selected', Wn); SFX.pop(); r.banner = '🌼 The bee chooses ' + Wn.name + '!'; });
       }
     },
