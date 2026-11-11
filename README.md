@@ -15,7 +15,7 @@ Open `index.html` in Chrome or Edge, or use the GitHub Pages link. Add your clas
 | 11 Capybara Melon Delivery | Capybaras nose watermelons down the canal to the delivery ring. | The first melon splits open with a duckling inside; the current turns and carries another melon in. |
 | 12 Popcorn Cinema | Students shake popcorn to the projector's beat; when the music stops the spotlight picks one. | A bucket explodes off the beat; the projector adds a bonus beat and the spotlight moves on. |
 
-About one round in four has no twist. The winner is always chosen the moment you press Pick.
+Rounds last 7 or 10 seconds. Plot Twist is off by default and can be enabled in Settings. The winner is chosen when you press Pick.
 
 Class lists stay in the browser and are shared with Name Picker Party when both are opened from the same site; use **Export backup** on the class page to keep a copy.
 
@@ -33,3 +33,5 @@ Game-specific MP3 effects load only for the selected game and use the existing S
 Run the dependency-free audio lifecycle checks with `node tests/sfx.test.cjs`.
 
 Each game streams its own Kevin MacLeod BGM from `assets/bgm/` after a user gesture. Music credits and CC BY 4.0 sources are in `assets/bgm/credits.html`. Short action/result jingles retain VCSL samples; foreground effects briefly lower the music.
+
+Regression checks: `node tests/core.test.cjs` and `node tests/sw.test.cjs`. A BGM becomes available offline after that game’s track has loaded once.
