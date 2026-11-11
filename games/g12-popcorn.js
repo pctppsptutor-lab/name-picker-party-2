@@ -15,7 +15,7 @@
   }
 
   GAME_IMPL.g12 = {
-    id: 'g12', title: 'Popcorn Goes Pop', base: 'assets/g12/', titleY: 440, paintedOk: true,
+    id: 'g12', title: 'Popcorn Goes Pop', base: 'assets/g12/', titleY: 440,
     assets: gAssets(['listen', 'beat1', 'beat2', 'freeze', 'offbeat', 'bonus', 'win'], ['p0', 'p1', 'p2', 'p3', 'p6', 'p7', 'p16', 'p19', 'p20', 'p34']),
     startBanner: '🎬 Shake your popcorn to the beat!', mote: '#ffe8b0', rayColor: '#fff2a8',
 

@@ -31,7 +31,7 @@
   const arcP = (a, b, k, lift) => [lerp(a[0], b[0], k), lerp(a[1], b[1], k) - Math.sin(k * Math.PI) * lift];
 
   GAME_IMPL.g7 = {
-    id: 'g7', title: 'Achoo, Bee!', base: 'assets/g7/', titleY: 560, paintedOk: true,
+    id: 'g7', title: 'Achoo, Bee!', base: 'assets/g7/', titleY: 560,
     assets: gAssets(['idle', 'ready', 'almost', 'fake', 'twist', 'win'], [...FLOWERS, 'p0', 'p2', 'p3', 'p5', 'p6', 'p24', 'p25', 'p26', 'p37']),
     startBanner: '🐝 The bee buzzes out of the hive!', mote: '#fff6c8', rayColor: '#fff2a8',
 
@@ -51,10 +51,10 @@
       const f = activeFake(r, t), D = r.decoy, Wn = r.winner;
       if (te < 0) { r.lastBee = bee(r, t); r.atTW = r.lastBee; }
       if (f && te < 0) cue('fk' + f.at, () => { r.banner = '🐝 The bee checks ' + f.p.name + "'s flower…"; SFX.leader(); FX.glitter(...top(f.p), 5); });
-      if (te < 0 && Math.random() < .04) SFX.tone(220 + Math.random() * 40, .09, { type: 'sawtooth', vol: .025, lp: 900 });   // buzz
+
       if (!r.plain) {
         if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = '🐝 The bee lands on ' + D.name + "'s flower!"; });
-        if (te > .7) cue('b', () => { outcome('wrong_turn', D); CAM.shake(r, 12); SFX.noise(.25, { vol: .2, f: 500, to: 2000 }); SFX.noise(.5, { vol: .35, f: 2600, to: 400, delay: .25 });
+        if (te > .7) cue('b', () => { outcome('wrong_turn', D); CAM.shake(r, 12);
           FX.glitter(...top(D), 30, ['#ffe066', '#fff3a0']); r.banner = '🤧 Ah-CHOO! The flower sneezes pollen!'; });
         if (te > 1) cue('c', () => { SFX.wheee(); SFX.swoosh(); r.banner = '💨 The bee is blown across the garden…'; });
         if (te > 2.3) cue('d', () => { outcome('selected', Wn); SFX.pop(); r.banner = '🌼 …and lands on ' + Wn.name + "'s flower!"; });

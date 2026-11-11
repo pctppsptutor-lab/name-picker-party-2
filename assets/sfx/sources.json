@@ -1,0 +1,157 @@
+{
+  "bee": {
+    "source": "bee/bee.wav",
+    "start": 0.15,
+    "maxDuration": 1.4,
+    "duration": 1.4,
+    "bytes": 11537
+  },
+  "bell": {
+    "source": "foley/bell_01.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 1.091,
+    "bytes": 9030
+  },
+  "bubble1": {
+    "source": "water/bubble_01.ogg",
+    "start": 0,
+    "maxDuration": 1.5,
+    "duration": 0.554,
+    "bytes": 4850
+  },
+  "bubble2": {
+    "source": "water/bubble_02.ogg",
+    "start": 0,
+    "maxDuration": 1.5,
+    "duration": 0.262,
+    "bytes": 2551
+  },
+  "coin": {
+    "source": "foley/metal_09.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.565,
+    "bytes": 4850
+  },
+  "glass": {
+    "source": "foley/glass_03.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.359,
+    "bytes": 3178
+  },
+  "meow": {
+    "source": "kitten.ogg",
+    "start": 0,
+    "maxDuration": 1.3,
+    "duration": 0.898,
+    "bytes": 7567
+  },
+  "motor1": {
+    "source": "foley/machine_01.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.554,
+    "bytes": 4850
+  },
+  "motor3": {
+    "source": "foley/machine_03.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.462,
+    "bytes": 4014
+  },
+  "paddle": {
+    "source": "water/splash_09.ogg",
+    "start": 0,
+    "maxDuration": 1.5,
+    "duration": 0.213,
+    "bytes": 2133
+  },
+  "paper1": {
+    "source": "foley/paper_01.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.421,
+    "bytes": 3805
+  },
+  "paper2": {
+    "source": "foley/paper_02.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.548,
+    "bytes": 4641
+  },
+  "paper3": {
+    "source": "foley/paper_03.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.532,
+    "bytes": 4641
+  },
+  "pop1": {
+    "source": "foley/plop_01.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.107,
+    "bytes": 1297
+  },
+  "pop2": {
+    "source": "foley/plop_02.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.185,
+    "bytes": 1924
+  },
+  "pot": {
+    "source": "foley/pot_01.ogg",
+    "start": 0,
+    "maxDuration": 1.6,
+    "duration": 0.251,
+    "bytes": 2342
+  },
+  "sneeze": {
+    "source": "sneeze.mp3",
+    "url": "https://bigsoundbank.com/UPLOAD/mp3/0609.mp3",
+    "duration": 0.52,
+    "bytes": 4432,
+    "start": 0.17,
+    "maxDuration": 0.52
+  },
+  "splash1": {
+    "source": "water/splash_02.ogg",
+    "start": 0,
+    "maxDuration": 1.5,
+    "duration": 0.579,
+    "bytes": 5059
+  },
+  "splash2": {
+    "source": "water/splash_05.ogg",
+    "start": 0,
+    "maxDuration": 1.5,
+    "duration": 0.929,
+    "bytes": 7776
+  },
+  "squeak1": {
+    "source": "creature/cute_01.ogg",
+    "start": 0,
+    "maxDuration": 1.5,
+    "duration": 0.39,
+    "bytes": 3387
+  },
+  "squeak2": {
+    "source": "creature/cute_03.ogg",
+    "start": 0,
+    "maxDuration": 1.5,
+    "duration": 0.596,
+    "bytes": 5059
+  },
+  "water": {
+    "source": "water/loop_water_01.ogg",
+    "start": 0,
+    "maxDuration": 1.5,
+    "duration": 1.498,
+    "bytes": 12373
+  }
+}

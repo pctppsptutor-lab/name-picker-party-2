@@ -33,7 +33,7 @@
   }
 
   GAME_IMPL.g10 = {
-    id: 'g10', title: 'Magic Book', base: 'assets/g10/', titleY: 820, paintedOk: false,
+    id: 'g10', title: 'Magic Book', base: 'assets/g10/', titleY: 820,
     assets: gAssets(['win'], [...ICONS, 'p0', 'p1', 'p4', 'p5', 'p6', 'p7', 'p19', 'p22']),
     startBanner: '📖 Remember which symbol belongs to whom!', mote: '#ffe6a8', rayColor: '#fff0c0',
 
@@ -50,15 +50,15 @@
 
     tick(r, t, te) {
       const f = activeFake(r, t), D = r.decoy, Wn = r.winner;
-      if (t > .6) cue('open', () => { SFX.swoosh(); r.banner = '📖 The pages flip open — remember the symbols!'; });
+      if (t > .6) cue('open', () => { r.banner = '📖 The pages flip open — remember the symbols!'; });
       if (t > .6 + r.M) cue('close', () => { SFX.tone(200, .25, { type: 'triangle', vol: .12 }); r.banner = '🌀 The book shuffles its pages…'; });
-      for (const s of r.swaps) if (t > s.at) cue('sw' + s.at, () => SFX.noise(.18, { vol: .1, f: 2500, to: 900, q: .8 }));
+      for (const s of r.swaps) if (t > s.at) cue('sw' + s.at, () => GameSound.play("paper1 paper2 paper3", { gain: .3, gap: .12 }));
       if (f && te < 0 && t > r.swaps.reduce((m, s) => Math.max(m, s.at), 0)) cue('fk' + f.at, () => { r.banner = '🔖 The bookmark points at ' + f.p.name + "'s page…"; SFX.leader(); });
       if (!r.plain) {
-        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); SFX.swoosh(); r.banner = '📖 ' + D.name + "'s page flips open…"; });
+        if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = '📖 ' + D.name + "'s page flips open…"; });
         if (te > .5) cue('b', () => { outcome('wrong_turn', D); SFX.noise(.6, { vol: .18, f: 1200, q: .6 }); SFX.sadTrombone(); r.banner = '🧽 An eraser rubs the symbol away!'; });
         if (te > 1.2) cue('c', () => { SFX.sparkle(); r.banner = '🔖 The bookmark starts to glow…'; });
-        if (te > 1.8) cue('d', () => { outcome('selected', Wn); SFX.swoosh(); r.banner = '✨ …and slides to the real page!'; });
+        if (te > 1.8) cue('d', () => { outcome('selected', Wn); r.banner = '✨ …and slides to the real page!'; });
       } else {
         if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D || Wn); r.banner = '🔖 Is it ' + (D || Wn).name + "'s page?"; });
         if (te > 1) cue('b', () => { outcome('selected', Wn); SFX.boing(); r.banner = '🔖 The bookmark changes its mind!'; });

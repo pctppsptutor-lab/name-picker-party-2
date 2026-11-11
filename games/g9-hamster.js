@@ -35,7 +35,7 @@
   }
 
   GAME_IMPL.g9 = {
-    id: 'g9', title: 'Hamster Wheels', base: 'assets/g9/', titleY: 470, animals: true, paintedOk: false,
+    id: 'g9', title: 'Hamster Wheels', base: 'assets/g9/', titleY: 470, animals: true,
     assets: gAssets(['idle', 'ready', 'run', 'near', 'false', 'reverse', 'win'], ['p0', 'p1', 'p2', 'p3', 'p4', 'p5', 'p11', 'p12', 'p13', 'p21', 'p20', 'p22', 'p30']),
     startBanner: '🐹 Ready… set… RUN!', mote: '#fff3c0', rayColor: '#fff2a8',
 
@@ -49,7 +49,7 @@
     tick(r, t, te) {
       const f = activeFake(r, t), D = r.decoy, Wn = r.winner;
       if (f && te < 0) cue('fk' + f.at, () => { r.banner = '⚡ ' + f.p.name + "'s jar is charging fast!"; SFX.leader(); });
-      if (te < 0 && Math.random() < .07) SFX.tone(140 + Math.random() * 60, .05, { type: 'square', vol: .02 });   // wheels squeak
+
       if (!r.plain) {
         if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = '🌀 ' + D.name + "'s wheel is spinning WAY too fast!"; });
         if (te > .8) cue('b', () => { outcome('wrong_turn', D); CAM.shake(r, 10); SFX.swoosh(); SFX.sadTrombone(); r.banner = '😵 Whoa! It slips backwards!'; });

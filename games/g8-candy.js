@@ -46,7 +46,7 @@
   }
 
   GAME_IMPL.g8 = {
-    id: 'g8', title: 'Candy Storm', base: 'assets/g8/', titleY: 760, paintedOk: true,
+    id: 'g8', title: 'Candy Storm', base: 'assets/g8/', titleY: 760,
     assets: gAssets(['waiting', 'drop', 'false', 'switch', 'win'], [...BALLS, 'p14', 'p18', 'p28', 'p29', 'p30', 'p0', 'p3', 'p5', 'p6', 'p23', 'p24', 'p25']),
     startBanner: '🍬 The candy machine whirs to life!', mote: '#ffd6ec', rayColor: '#ffe0f0',
 
@@ -66,7 +66,7 @@
         if (t > run.at + run.dur) cue('in' + run.at, () => { SFX.ding(); FX.sparkle(CUPS[run.to][0], CUPS[run.to][1] - 20, 10); r.banner = '🍬 A candy lands in ' + run.p.name + "'s cup… and pops back out!"; });
       }
       if (t > r.goldAt) cue('gold', () => { SFX.pop(); SFX.sparkle(); r.banner = '✨ Here comes the golden candy!'; });
-      if (te < 0 && Math.random() < .05) SFX.tone(600 + Math.random() * 500, .05, { type: 'triangle', vol: .03 });   // rattling candies
+
       if (!r.plain) {
         if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = '🍭 It heads for ' + D.name + "'s cup…"; });
         if (te > .5) cue('b', () => { outcome('wrong_turn', D); SFX.boing(); SFX.sadTrombone(); r.banner = '🍭 Oops! A fake lollipop — the candy is stuck!'; });

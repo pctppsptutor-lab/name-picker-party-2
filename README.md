@@ -24,3 +24,10 @@ Class lists stay in the browser and are shared with Name Picker Party when both 
 - `index.html` – shell (UI, sound, music, camera, class lists).
 - `games/` – one file per game, plus `fx.js` (particles, camera), `bases.js` (code-drawn backgrounds) and `scenes.js` (moving scene layers).
 - `assets/` – sprites, burst effects and sounds for each game.
+
+
+## Sound effects
+
+Game-specific MP3 effects load only for the selected game and use the existing Sound toggle and SFX volume. Credits and edit details are in `assets/sfx/credits.html` and `assets/sfx/sources.json`.
+
+Run the dependency-free audio lifecycle checks with `node tests/sfx.test.cjs`.

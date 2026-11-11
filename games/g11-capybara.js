@@ -13,7 +13,7 @@
   }
 
   GAME_IMPL.g11 = {
-    id: 'g11', title: 'Capybara Wants Melon', base: 'assets/g11/', titleY: 230, animals: true, paintedOk: false, resultPose: 'win',
+    id: 'g11', title: 'Capybara Wants Melon', base: 'assets/g11/', titleY: 230, animals: true, resultPose: 'win',
     assets: gAssets(['idle', 'nudge', 'delivery', 'false', 'duck', 'win'], ['p19', 'p20', 'p25', 'p29']),
     startBanner: '🍉 The capybaras push off with their melons!', mote: '#e8fff0', rayColor: '#fff2a8',
 
@@ -43,7 +43,7 @@
         const lead = r.players.reduce((a, b) => progress(r, b, t) > progress(r, a, t) ? b : a);
         if (lead !== r.leader && t - (r.leaderAt || 0) > .5) { r.leader = lead; r.leaderAt = t; r.banner = '🍉 In front: ' + lead.name; SFX.leader(); }
       }
-      if (te < 0 && Math.random() < .04) SFX.paddle();
+
       if (!r.plain) {
         if (te > 0) cue('a', () => { Music.play('tension'); outcome('almost_selected', D); r.banner = '🍉 ' + D.name + "'s melon reaches the ring first…"; });
         if (te > .7) cue('b', () => { outcome('wrong_turn', D); SFX.pop(); SFX.quack(.1, 2); SFX.bubbles(); FX.splash(RING[0], RING[1], 18); r.banner = '🐥 It splits open — a duckling is having a bath!'; });
